@@ -92,8 +92,7 @@ class FirebaseAuthFacade implements AuthFacade {
         email: email,
         password: password,
       );
-      FirebaseUser user = await FirebaseAuth.instance.currentUser();
-      await user.updateEmail(email);
+      await FirebaseAuth.instance.currentUser.updateEmail(email);
       return const Auth.success();
     } on PlatformException catch (e) {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
